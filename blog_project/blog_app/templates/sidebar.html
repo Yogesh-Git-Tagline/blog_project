@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+{% block body %}
+
+<body>
+    {% endblock body %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-auto bg-warning">
+                <div class=" align-items-center align-items-sm-start px-3 min-vh-100">
+                    <a href="/" class=" text-dark text-decoration-none">
+                        <span class="fs-5">BLOG APP</span>
+                    </a>
+                    <ul class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
+                        <li>
+                            <a href="{% url "homepage" %}" class="nav-link ">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1">Home</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{% url "blog_list" %}" class="nav-link ">
+                                <span class="ms-1">Blog List</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link">
+                                <span class="ms-1">Blogger List</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link">
+                                <span class="ms-1">Login</span></a>
+                        </li>
+                </div>
+            </div>
+            <div class="col py-3">
+                {% block homepage %}
+
+                {% endblock homepage %}
+
+                {% block blog_list %}
+                
+                {% endblock blog_list %}
+
+                {% block blog_detail %}
+                
+                {% endblock blog_detail %}
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+{% extends "sidebar.html" %}
+
+{% block body %}
+
+<body class='alert-danger'>
+    {% endblock body %}
+
+
+    {% block blog_list %}
+    <div class="container">
+        <div class="row">
+            <h1 class='alert-primary text-center'>BLOG LIST</h1>
+            <hr>
+            {% for blog in blog_list %}
+            <div class="alert-info border border-dark border-1 mt-1 p-2 shadow text-dark">
+                <strong>Blog title: <a href="{% url "blog" blog.id %}">{{blog.title}}</a></strong> <br>
+                <strong>Post date:</strong> {{blog.date}} <br>
+                <strong>Author:</strong> <a href="{% url "author" blog.id %}">{{blog.author}}</a> <br>
+            </div>
+            {% endfor %}
+
+            <!-- pagination  -->
+            <nav class='mt-2'>
+                <ul class='pagination pagination-sm'>
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a href="?page={{page_obj.previous_page_number}}" class='page-link'>previous</a>
+                    </li>
+                    {% endif %}
+                    <li class="page-item active">
+                        <a href="#" class='page-link'>page {{page_obj.number}} of {{page_obj.paginator.num_pages}}</a>
+                    </li>
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a href="?page={{page_obj.next_page_number}}" class='page-link'>next</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+    {% endblock blog_list %}
