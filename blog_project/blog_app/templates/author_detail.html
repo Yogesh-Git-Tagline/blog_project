@@ -1,9 +1,31 @@
 {% extends "sidebar.html" %}
 
 {% block body %}
-<body class='alert-secondary'>
-{% endblock body %}
 
-{% block blog_detail %}
-<h1 class='alert-primary text-center'>AUTHOR DETAIL</h1>
-{% endblock blog_detail %}
+<body class='alert-secondary'>
+    {% endblock body %}
+
+    {% block blog_detail %}
+    <h1 class='alert-primary text-center border border-1 border-dark'>AUTHOR DETAIL</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <h2 class='alert-danger text-center rounded-pill border border-1 border-dark'>Author Detail</h2>
+                <div class="alert-info text-dark border border-dark border-1 p-1">
+                    <strong>Author name:- {{author.username}}</strong> <br>
+                    <strong>Email:- {{author.email}}</strong> <br>
+                    <strong>Published blogs:- {{author.blogs.all|length}}</strong>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <h2 class='bg-info text-center rounded-pill'>{{author}} published blogs</h2>
+                {% for post in author.blogs.all %}
+                <div class="alert-warning border border-dark border-1 p-1 mt-1">
+                    <span class='h6'>Blog Tilte: </span><a href="{% url "blog" post.id %}">{{post.title}}</a> <br>
+                    <span class='h6'>Blog post date: </span>{{post.created_at}}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endblock blog_detail %}

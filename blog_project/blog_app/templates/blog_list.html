@@ -9,13 +9,20 @@
     {% block blog_list %}
     <div class="container">
         <div class="row">
-            <h1 class='alert-primary text-center'>BLOG LIST</h1>
+            <h1 class='alert-primary text-center border border-1 border-dark'>BLOG LIST</h1>
             <hr>
+            <div class='col-sm-3'>
+                <form class="d-flex" method='get' action="{% url "blog_list" %}">
+                    {% csrf_token %}
+                    <input class="form-control me-2" name='search' type="search" placeholder="Search blogs" required>
+                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                </form>
+            </div>
             {% for blog in blog_list %}
             <div class="alert-info border border-dark border-1 mt-1 p-2 shadow text-dark">
                 <strong>Blog title: <a href="{% url "blog" blog.id %}">{{blog.title}}</a></strong> <br>
                 <strong>Post date:</strong> {{blog.date}} <br>
-                <strong>Author:</strong> <a href="{% url "author" blog.id %}">{{blog.author}}</a> <br>
+                <strong>Author:</strong> <a href="{% url "author" blog.author.id %}">{{blog.author}}</a> <br>
             </div>
             {% endfor %}
 
