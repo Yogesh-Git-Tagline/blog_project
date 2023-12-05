@@ -22,3 +22,12 @@ class Blog(BlogDate):
 
     def __str__(self):
         return self.title
+
+
+class BlogComment(BlogDate):
+    description = models.TextField()
+    for_blog = models.ForeignKey(
+        Blog, on_delete=models.CASCADE, related_name='comments')
+
+    class Meta:
+        ordering = ('-created_at',)

@@ -1,0 +1,21 @@
+{% extends "sidebar.html" %}
+
+{% block body %}
+
+<body class='alert-secondary'>
+    {% endblock body %}
+
+    {% block user_registeration %}
+    <div class="col-sm-8">
+        <div class='offset-5 mt-5 p-3 rounded bg-info '>
+            <h2 class='alert-danger text-dark text-center rounded-pill'>REGISTER USER</h2>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                <strong class="text-dark">{{field.label_tag}}</strong> {{field}} <br>
+                {% endfor %}
+                <input type="submit" value="Submit" class='btn btn-primary '>
+            </form>
+        </div>
+    </div>
+    {% endblock user_registeration %}

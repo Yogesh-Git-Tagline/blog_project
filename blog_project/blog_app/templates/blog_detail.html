@@ -1,10 +1,39 @@
 {% extends "sidebar.html" %}
 
 {% block body %}
-<body class='alert-secondary'>
-{% endblock body %}
 
-{% block blog_detail %}
-<h1 class='alert-primary text-center'> BLOG DETAIL</h1>
-{{blog.title}}
-{% endblock blog_detail %}
+<body class='alert-secondary'>
+    {% endblock body %}
+
+    {% block blog_detail %}
+    <h1 class='alert-primary text-center border border-1 border-dark'> BLOG DETAIL</h1>
+    <div class="col-sm-10 offset-1 ">
+
+        <div class="jumbotron bg-info p-2 detail_blog shadow">
+            <h5>Title: {{blog.title}}</h5>
+            <hr>
+            <strong>Author: {{blog.author}} </strong> <br>
+            <strong>Published Date: {{blog.created_at}}</strong> <br>
+            <strong>Description:</strong><br>
+            <p class="">{{blog.content}}</p>
+        </div> <br>
+        <strong class='h5'>Comments:</strong> <br>
+        <hr>
+
+        {% if blog.comments.all %}
+        {% for comment in blog.comments.all %}
+        <div class='mt-2'>
+            <strong>Commented by:</strong> {{request.user}} <strong>on</strong> {{comment.created_at}}
+            <div class="blog_comment shadow p-1">
+                <p>{{comment.description}}</p>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h2>No comments yet</h2>
+        {% endif %}
+
+        <a href="{% url "add_comment" blog.id %}" class='btn btn-primary mt-2'> ✉️ Add Comment</a>
+
+    </div>
+    {% endblock blog_detail %}

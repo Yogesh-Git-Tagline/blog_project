@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
@@ -37,10 +39,22 @@
                             <a href="#" class="nav-link">
                                 <span class="ms-1">Blogger List</span></a>
                         </li>
+
+                        {% if request.user.is_authenticated %}
                         <li>
-                            <a href="#" class="nav-link">
+                            <a href="{% url "user_logout" %}" class="nav-link">
+                                <span class="ms-1">Logout</span></a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{% url "user_login" %}" class="nav-link">
                                 <span class="ms-1">Login</span></a>
                         </li>
+                        <li>
+                            <a href="{% url "user_register" %}" class="nav-link">
+                                <span class="ms-1">Register</span></a>
+                        </li>
+                        {% endif %}
                 </div>
             </div>
             <div class="col py-3">
@@ -55,6 +69,20 @@
                 {% block blog_detail %}
 
                 {% endblock blog_detail %}
+
+                {% block add_comment %}
+
+                {% endblock add_comment %}
+
+                {% block user_registeration %}
+
+                {% endblock user_registeration %}
+
+                {% block user_login %}
+
+                {% endblock user_login %}
+
+
             </div>
         </div>
     </div>

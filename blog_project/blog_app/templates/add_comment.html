@@ -1,0 +1,22 @@
+{% extends "sidebar.html" %}
+
+{% block body %}
+
+<body class='alert-secondary'>
+    {% endblock body %}
+
+    {% block add_comment %}
+    <h2 class='alert alert-danger text-center text-dark border border-1 border-dark'>ADD COMMENT</h2>
+    <div class="col-sm-8 offset-2">
+        <div class="alert-success p-2 border border-1 border-dark">
+            <form method="post">
+                {% csrf_token %}
+                <strong class='text-dark h5'>Commenting on: <a
+                        href="{% url "blog" blogpost.id %}">{{blogpost.title}}</a></strong> <br> <br>
+                {{form}} <br>
+                <input type="submit" value="✅ submit" class='btn btn-success offset-5'>
+            </form>
+        </div>
+        <a href="{% url "blog" blogpost.id %}" class='btn btn-dark mt-1'>❌ Cancel</a>
+    </div>
+    {% endblock add_comment %}
