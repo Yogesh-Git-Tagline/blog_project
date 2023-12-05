@@ -50,7 +50,7 @@ class AddBlogComment(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         blog_instance = Blog.objects.get(id=self.kwargs['id'])
-        form.instance.for_blog = blog_instance
+        form.instance.blog = blog_instance
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -79,5 +79,5 @@ class UserLogin(LoginView):
     success_url = '/blog/'
 
 
-class UserLogout(LogoutView):
+class UserLogout(LoginRequiredMixin,LogoutView):
     template_name = 'user_authentication/user_login.html'

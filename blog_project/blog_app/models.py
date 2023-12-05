@@ -13,8 +13,7 @@ class BlogDate(models.Model):
 
 class Blog(BlogDate):
     title = models.CharField(max_length=500)
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='blogs')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blogs')
     content = models.TextField()
 
     class Meta:
@@ -26,8 +25,7 @@ class Blog(BlogDate):
 
 class BlogComment(BlogDate):
     description = models.TextField()
-    for_blog = models.ForeignKey(
-        Blog, on_delete=models.CASCADE, related_name='comments')
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
 
     class Meta:
         ordering = ('-created_at',)

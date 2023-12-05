@@ -7,4 +7,4 @@ class BlogAdmin(admin.ModelAdmin):
 
 @admin.register(BlogComment)
 class BlogCommentAdmin(admin.ModelAdmin):
-    list_display=['id','description','for_blog','created_at']
+    list_display=['id','description','blog','created_at']
