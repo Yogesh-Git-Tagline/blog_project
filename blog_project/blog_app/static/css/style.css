@@ -6,3 +6,9 @@
     background-color: lightpink;
     border-radius: 7px;
 }
+.home{
+    background-color: rgb(157, 226, 236);
+    margin-top: 150px;
+    border-radius: 20px;
+    padding: 20px;
+}

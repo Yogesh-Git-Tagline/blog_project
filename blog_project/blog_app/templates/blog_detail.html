@@ -2,27 +2,28 @@
 
 {% block body %}
 
-<body class='alert-secondary'>
+<body class='alert-success'>
     {% endblock body %}
 
     {% block blog_detail %}
-    <h1 class='alert-primary text-center border border-1 border-dark'> BLOG DETAIL</h1>
+    <h1 class='alert-primary text-center border border-1 text-dark border-dark'>📋 BLOG DETAIL</h1>
     <div class="col-sm-10 offset-1 ">
 
-        <div class="jumbotron bg-info p-2 detail_blog shadow">
-            <h5>Title: {{blog.title}}</h5>
+        <div class="jumbotron bg-info p-2 detail_blog shadow text-dark">
+            <h4>🟠 Title: {{blog.title}}</h4>
             <hr>
-            <strong>Author: {{blog.author.first_name}} {{blog.author.last_name}}</strong> <br>
-            <strong>Published Date: {{blog.created_at}}</strong> <br>
-            <strong>Description:</strong><br>
+            <strong>✍️ Author: <a href="{% url "author" blog.author.id %}">{{blog.author.first_name}}
+                {{blog.author.last_name}}</a> </strong> <br>
+            <strong>🗓 Published Date: {{blog.created_at}}</strong> <br>
+            <strong>📋 Description:</strong><br>
             <p class="">{{blog.content}}</p>
         </div> <br>
-        <strong class='h5'>Comments:</strong> <br>
+        <strong class='h5'>💌 Comments:</strong> <br>
         <hr>
 
         {% if blog.comments.all %}
         {% for comment in blog.comments.all %}
-        <div class='mt-2'>
+        <div class='mt-2 text-dark'>
             <strong>Commented by:</strong> {{comment.commentor.first_name}} {{comment.commentor.last_name}}
             &nbsp <strong>on</strong>&nbsp {{comment.created_at}}
             <div class="blog_comment shadow p-1">

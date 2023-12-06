@@ -1,13 +1,18 @@
 {% extends "sidebar.html" %}
 
 {% block body %}
-<body class='alert-primary'>
-{% endblock body %}
 
-{% block homepage %}
-<div class="container">
-    <div class="row">
-        <h1 class='alert-primary text-center'>HOME</h1>
+<body class='alert-danger'>
+    {% endblock body %}
+
+    {% block homepage %}
+    <div class="container">
+        <div class="col-sm-9">
+            <div class="home shadow offset-3">
+                <h1 class='text-center text-danger fst-bold
+            fst-italic'>Welcome To Blog Area</h1>
+                <p class='fw-bold text-dark'>Blogging is a communications mechanism handed to us by the long tail of the Internet. Blogs are whatever we make them. Defining ‘Blog’ is a fool’s errand. Not only are bloggers suckers for the remarkable, so are the people who read blogs.</p>
+            </div>
+        </div>
     </div>
-</div>
-{% endblock homepage %}
+    {% endblock homepage %}

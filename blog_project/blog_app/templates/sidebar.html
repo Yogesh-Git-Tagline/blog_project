@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BLOG APPLICATION</title>
     <link rel="stylesheet" href="{% static "css/style.css" %}">
     {% load bootstrap5 %}
     {% bootstrap_css %}
@@ -19,40 +19,40 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-auto bg-warning">
+            <div class="col-auto bg-danger">
                 <div class=" align-items-center align-items-sm-start px-3 min-vh-100">
-                    <a href="/" class=" text-dark text-decoration-none">
-                        <span class="fs-5">BLOG APP</span>
-                    </a>
+                    <a href="{% url "homepage" %}" class=" text-dark text-decoration-none">
+                        <span class="fs-2 fw-bold">📙 BLOG APP</span>
+                    </a> <hr>
                     <ul class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
                         <li>
-                            <a href="{% url "homepage" %}" class="nav-link ">
-                                <i class="fs-4 bi-house"></i> <span class="ms-1">Home</span>
+                            <a href="{% url "homepage" %}" class="nav-link text-light">
+                                 <span class="ms-5 fw-bold">🏠 Home</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="{% url "blog_list" %}" class="nav-link ">
-                                <span class="ms-1">Blog List</span></a>
+                            <a href="{% url "blog_list" %}" class="nav-link text-light">
+                                <span class="ms-5 fw-bold">📑 Blog List</span></a>
                         </li>
                         <li>
-                            <a href="{% url "blogger_list" %}" class="nav-link">
-                                <span class="ms-1">Blogger List</span></a>
+                            <a href="{% url "blogger_list" %}" class="nav-link text-light">
+                                <span class="ms-5 fw-bold">👨‍👦‍👦 Blogger List</span></a>
                         </li>
 
                         {% if request.user.is_authenticated %}
                         <li>
-                            <a href="{% url "user_logout" %}" class="nav-link">
-                                <span class="ms-1">Logout</span></a>
+                            <a href="{% url "user_logout" %}" class="nav-link text-light">
+                                <span class="ms-5 fw-bold">⬅ Logout</span></a>
                         </li>
                         {% else %}
                         <li>
-                            <a href="{% url "user_login" %}" class="nav-link">
-                                <span class="ms-1">Login</span></a>
+                            <a href="{% url "user_login" %}" class="nav-link text-light">
+                                <span class="ms-5 fw-bold">🔐 Login</span></a>
                         </li>
                         <li>
-                            <a href="{% url "user_register" %}" class="nav-link">
-                                <span class="ms-1">Register</span></a>
+                            <a href="{% url "user_register" %}" class="nav-link text-light">
+                                <span class="ms-5 fw-bold">➕ Register</span></a>
                         </li>
                         {% endif %}
                 </div>

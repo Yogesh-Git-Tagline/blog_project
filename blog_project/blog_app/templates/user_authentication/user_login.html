@@ -8,13 +8,13 @@
     {% block user_login %}
     <div class="col-sm-8">
         <div class='offset-5 mt-5 p-3 rounded bg-warning '>
-            <h2 class='bg-info text-dark text-center rounded-pill'>LOGIN USER</h2>
+            <h2 class='bg-info text-dark text-center rounded-pill'>🔐 LOGIN USER</h2>
             <form method="post">
                 {% csrf_token %}
                 {% for field in form %}
                 <strong class="text-dark">{{field.label_tag}}</strong> {{field}} <br>
                 {% endfor %}
-                <input type="submit" value="Login" class='btn btn-success '>
+                <input type="submit" value="✅ Login" class='btn btn-success offset-5'>
             </form>
         </div>
     </div>

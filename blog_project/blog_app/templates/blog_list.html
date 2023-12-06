@@ -9,20 +9,20 @@
     {% block blog_list %}
     <div class="container">
         <div class="row">
-            <h1 class='alert-primary text-center border border-1 border-dark'>BLOG LIST</h1>
+            <h1 class='alert-primary text-center border border-1 border-dark'>📑 BLOG LIST</h1>
             <hr>
             <div class='col-sm-3'>
                 <form class="d-flex" method='get' action="{% url "blog_list" %}">
                     {% csrf_token %}
-                    <input class="form-control me-2" name='search' type="search" placeholder="Search blogs" required>
+                    <input class="form-control me-2" name='search' type="search" placeholder="🔎 Search blogs" required>
                     <button class="btn btn-outline-dark" type="submit">Search</button>
                 </form>
             </div>
             {% for blog in blog_list %}
             <div class="alert-info border border-dark border-1 mt-1 p-2 shadow text-dark">
-                <strong>Blog title: <a href="{% url "blog" blog.id %}">{{blog.title}}</a></strong> <br>
-                <strong>Post date:</strong> {{blog.created_at}} <br>
-                <strong>Author:</strong> <a href="{% url "author" blog.author.id %}">{{blog.author.first_name}} {{blog.author.last_name}}</a> <br>
+                <strong>🟠 Blog title: <a href="{{ blog.get_absolute_url }}">{{blog.title}}</a></strong> <br>
+                <strong>🗓 Post date:</strong> {{blog.created_at}} <br>
+                <strong>✍️ Author:</strong> <a href="{% url "author" blog.author.id %}">{{blog.author.first_name}} {{blog.author.last_name}}</a> <br>
             </div>
             {% endfor %}
 
@@ -31,7 +31,7 @@
                 <ul class='pagination pagination-sm'>
                     {% if page_obj.has_previous %}
                     <li class="page-item">
-                        <a href="?page={{page_obj.previous_page_number}}" class='page-link'>previous</a>
+                        <a href="?page={{page_obj.previous_page_number}}" class='page-link'>👈 previous</a>
                     </li>
                     {% endif %}
                     <li class="page-item active">
@@ -39,7 +39,7 @@
                     </li>
                     {% if page_obj.has_next %}
                     <li class="page-item">
-                        <a href="?page={{page_obj.next_page_number}}" class='page-link'>next</a>
+                        <a href="?page={{page_obj.next_page_number}}" class='page-link'>next 👉</a>
                     </li>
                     {% endif %}
                 </ul>

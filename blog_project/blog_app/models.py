@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
-
+from django.urls import reverse
 
 class BlogDate(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -21,6 +21,9 @@ class Blog(BlogDate):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("blog", kwargs={"pk": self.pk})
 
 
 class BlogComment(BlogDate):
