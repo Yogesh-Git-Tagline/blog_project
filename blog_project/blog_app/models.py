@@ -26,6 +26,7 @@ class Blog(BlogDate):
 class BlogComment(BlogDate):
     description = models.TextField()
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    commentor = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('-created_at',)

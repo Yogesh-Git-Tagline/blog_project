@@ -36,7 +36,7 @@
                                 <span class="ms-1">Blog List</span></a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link">
+                            <a href="{% url "blogger_list" %}" class="nav-link">
                                 <span class="ms-1">Blogger List</span></a>
                         </li>
 
@@ -81,6 +81,10 @@
                 {% block user_login %}
 
                 {% endblock user_login %}
+
+                {% block bloggers_list %}
+
+                {% endblock bloggers_list %}
 
 
             </div>

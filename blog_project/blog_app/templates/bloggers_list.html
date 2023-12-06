@@ -1,0 +1,36 @@
+{% extends "sidebar.html" %}
+
+{% block body %}
+
+<body class='alert-secondary'>
+    {% endblock body %}
+
+    {% block bloggers_list %}
+    <h2 class='bg-primary text-light rounded-pill text-center'>LIST OF ALL BLOGGERS</h2>
+    <div class="col-sm-10">
+        <div class="offset-3 ">
+
+            <table class="table table-bordered alert-warning border border-2 border-dark">
+                <thead>
+                    <tr>
+                        <th>Bloggers Name</th>
+                        <th>Bloggers Email</th>
+                        <th>Total posted blogs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for blogger in bloggers %}
+                    {% if blogger.blogs.all %}
+                    <tr>
+                        <td><a href="{% url "author" blogger.id %}"><strong>{{blogger.first_name}} {{blogger.last_name}}</strong></a></td>
+                        <td><a href="mailto:{{blogger.email}}">{{blogger.email}}</a></td>
+                        <td>{{blogger.blogs.all|length}}</td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    {% endblock bloggers_list %}

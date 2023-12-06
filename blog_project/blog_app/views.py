@@ -51,6 +51,7 @@ class AddBlogComment(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         blog_instance = Blog.objects.get(id=self.kwargs['id'])
         form.instance.blog = blog_instance
+        form.instance.commentor = self.request.user
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -61,6 +62,11 @@ class AddBlogComment(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         id = self.kwargs['id']
         return reverse('blog', kwargs={'pk': id})
+
+class BloggerList(ListView):
+    model=User
+    template_name='bloggers_list.html'
+    context_object_name='bloggers'
 
 # User Authentications
 
